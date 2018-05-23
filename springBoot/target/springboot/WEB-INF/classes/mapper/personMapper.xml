@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jiashi.dao.PersonDao">
+   
+   
+   <insert id="addPerson" parameterType="com.jiashi.domain.Person">
+        INSERT INTO userInfo
+			(username,userid,enterTime,userConnect,emerContPer,emrContCont,isDelete,password)
+		VALUES
+			(#{username},#{userid},#{enterTime},#{userConnect},#{emerContPer},#{emrContCont},#{isDelete},#{password})
+   </insert>
+   
+   <select id="findPersonByUserid" parameterType="String" resultType="com.jiashi.domain.Person">
+       	SELECT
+		  username,
+		  userid,
+		  enterTime,
+		  userConnect,
+		  emerContPer,
+		  emrContCont,
+		  isDelete
+		FROM userInfo 
+		WHERE userid =#{userId} AND isDelete='0'
+   </select>
+   
+   
+     <select id="selectPerson"  resultType="com.jiashi.domain.Person">
+       	SELECT
+		  username,
+		  userid,
+		  enterTime,
+		  userConnect,
+		  emerContPer,
+		  emrContCont,
+		  isDelete
+		FROM userInfo 
+		WHERE isDelete='0'
+   </select>
+   
+    <select id="selectPersonByName" parameterType="String" resultType="com.jiashi.domain.Person">
+       	SELECT
+		  username,
+		  userid,
+		  enterTime,
+		  userConnect,
+		  emerContPer,
+		  emrContCont,
+		  isDelete
+		FROM userInfo 
+		WHERE isDelete='0'
+		AND username=#{dayCostUserName2}
+   </select>
+    
+   <update id="deletePersonByUserId" parameterType="String">
+		UPDATE userInfo 
+		SET
+			isDelete='1'
+		WHERE
+			userid = #{userId}
+	</update>
+   
+</mapper>

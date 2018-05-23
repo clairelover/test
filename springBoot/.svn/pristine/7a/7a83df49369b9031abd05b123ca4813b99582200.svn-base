@@ -1,0 +1,140 @@
+package com.jiashi.domain;
+
+public class Topic {
+	
+	/**
+	 * 题目表实体类
+	 */
+	//题目ID
+	private int topic_id;
+	
+	//题目名称
+	private int topic_name;
+	
+	//题目类型
+	private int topic_type;
+	
+	//题目分值
+	private int topic_score;
+	
+	//答案
+	private int answer;
+	
+	//是否必答
+	private int is_necessary;
+	
+	//创建人名称
+	private int create_user;
+	
+	//创建日期
+	private int create_date;
+	
+	//修改人名称
+	private int update_user;
+	
+	//修改日期
+	private int update_date;
+
+	public int getTopic_id() {
+		return topic_id;
+	}
+
+	public void setTopic_id(int topic_id) {
+		this.topic_id = topic_id;
+	}
+
+	public int getTopic_name() {
+		return topic_name;
+	}
+
+	public void setTopic_name(int topic_name) {
+		this.topic_name = topic_name;
+	}
+
+	public int getTopic_type() {
+		return topic_type;
+	}
+
+	public void setTopic_type(int topic_type) {
+		this.topic_type = topic_type;
+	}
+
+	public int getTopic_score() {
+		return topic_score;
+	}
+
+	public void setTopic_score(int topic_score) {
+		this.topic_score = topic_score;
+	}
+
+	public int getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(int answer) {
+		this.answer = answer;
+	}
+
+	public int getIs_necessary() {
+		return is_necessary;
+	}
+
+	public void setIs_necessary(int is_necessary) {
+		this.is_necessary = is_necessary;
+	}
+
+	public int getCreate_user() {
+		return create_user;
+	}
+
+	public void setCreate_user(int create_user) {
+		this.create_user = create_user;
+	}
+
+	public int getCreate_date() {
+		return create_date;
+	}
+
+	public void setCreate_date(int create_date) {
+		this.create_date = create_date;
+	}
+
+	public int getUpdate_user() {
+		return update_user;
+	}
+
+	public void setUpdate_user(int update_user) {
+		this.update_user = update_user;
+	}
+
+	public int getUpdate_date() {
+		return update_date;
+	}
+
+	public void setUpdate_date(int update_date) {
+		this.update_date = update_date;
+	}
+
+	public Topic() {
+		super();
+	}
+
+	public Topic(int topic_id, int topic_name, int topic_type, int topic_score, int answer, int is_necessary,
+			int create_user, int create_date, int update_user, int update_date) {
+		super();
+		this.topic_id = topic_id;
+		this.topic_name = topic_name;
+		this.topic_type = topic_type;
+		this.topic_score = topic_score;
+		this.answer = answer;
+		this.is_necessary = is_necessary;
+		this.create_user = create_user;
+		this.create_date = create_date;
+		this.update_user = update_user;
+		this.update_date = update_date;
+	}
+	
+	
+	
+
+}

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jiashi.dao.TeamDao">
+   
+   
+   <insert id="addTeamBuild" parameterType="com.jiashi.domain.Team">
+        INSERT INTO TeamBuildingData
+			(tb_code,tb_date,tb_person,tb_total_money,tb_av_money,isDelete)
+		VALUES
+			(#{tb_code},#{tb_date},#{tb_person},#{tb_total_money},#{tb_av_money},#{isDelete})
+   </insert>
+   
+   <select id="selectTeamBuild" parameterType="String" resultType="com.jiashi.domain.Team">
+   SELECT * FROM  TeamBuildingData where isDelete ='0'
+    <if test="month !=null">
+     AND (SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(tb_date,'-',-2),'-',1) FROM TeamBuildingData)=#{month}
+    </if>   
+   </select>
+   
+    <select id="selectTeamBuildByUserName" parameterType="String" resultType="com.jiashi.domain.Team">
+   SELECT * FROM  TeamBuildingData where isDelete ='0'
+     AND tb_person like "%"#{dayCostUserName}"%"
+   </select>
+   
+   
+   <!--   <select id="selectPerson"  resultType="com.jiashi.domain.Person">
+       	SELECT
+		  username,
+		  userid,
+		  enterTime,
+		  userConnect,
+		  emerContPer,
+		  emrContCont,
+		  isDelete
+		FROM userInfo 
+		WHERE isDelete='0'
+   </select>
+    
+   <update id="deletePersonByUserId" parameterType="String">
+		UPDATE userInfo 
+		SET
+			isDelete='1'
+		WHERE
+			userid = #{userId}
+	</update>
+    -->
+</mapper>

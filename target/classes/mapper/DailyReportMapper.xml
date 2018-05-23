@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jiashi.dao.DailyReportDao">
+	<!-- 目的：为DAO接口方法提供sql语句配置 -->
+	<insert id="addReport" parameterType="com.jiashi.domain.DailyReport">
+			INSERT INTO dailyReport
+			(id,userName,createTime,todaysWorkRecord,coordination,otherCases,tmorrowPlan,attachmentPath,isDelete,createUser,userid)
+			VALUES
+			(#{id},#{userName},#{createTime},#{todaysWorkRecord},#{coordination},#{otherCases},#{tmorrowPlan},#{attachmentPath},#{isDelete},#{createUser},#{userid})
+
+	</insert>
+	
+	<select id="queryReportByDate" resultType="com.jiashi.domain.DailyReport" parameterType="java.lang.String">
+			
+			select * from dailyReport where reportDate = #{reportDate} ,userid = #{userid}
+	
+	</select>
+</mapper>

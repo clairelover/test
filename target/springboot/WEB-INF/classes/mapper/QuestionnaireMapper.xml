@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jiashi.dao.QuestionnaireDao">
+   <resultMap type="com.jiashi.domain.Questionnaire" id="quesResult">
+   <result column="QUESTIONNAIRE_ID" property="quesId"/>
+   <result colunm="QUESTIONNAIRE_NAME" property="quesName"/>
+   <result colunm="QUESTIONNAIRE_TYPE" property="quesType"/>
+   <result colunm="QUESTIONNAIRE_TIME" property="quesTime"/>
+   <result colunm="QUESTIONNAIRE_SUM" property="quesSum"/>
+   <result colunm="CREATE_USER" property="createUser"/>
+   <result colunm="CREATE_DATE" property="createDate"/>
+   <result colunm="UPDATE_USER" property="createUser"/>
+   <result colunm="UPDATE_DATE" property="createDate"/>
+   </resultMap>
+   
+   <insert id="insertQuestionnaire" parameterType="com.jiashi.domain.Questionnaire">
+        INSERT INTO exam_questionnaire
+			(questionnaire_id,questionnaire_name,questionnaire_type)
+		VALUES
+			(#{quesId},#{quesName},#{quesType})
+   </insert>
+   <select id="selectQuestionnaire" resultMap="quesResult" parameterType="java.lang.String">
+   select questionnaire_name,questionnaire_type,questionnaire_time,create_user,create_time 
+   from exam_questionnaire
+   where questtionnaire_id=#{quesId}
+   </select>
+   
+   </mapper>

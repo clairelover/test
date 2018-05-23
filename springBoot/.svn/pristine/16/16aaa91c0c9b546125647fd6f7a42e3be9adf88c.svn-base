@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jiashi.dao.ProjectsDao">
+   
+   
+   <insert id="addProjects" parameterType="com.jiashi.domain.Projects">
+        INSERT INTO projects
+			(project_id,project_name,project_address,isDelete)
+		VALUES
+			(#{projectId},#{projectName},#{projectAddress},#{isDelete})
+   </insert>
+   
+   
+    <select id="selectProjects"  resultType="com.jiashi.domain.Projects">
+       	SELECT
+		  project_id AS projectId,
+		  project_name AS projectName,
+		  project_address AS projectAddress,
+		  isDelete AS isDelete
+		FROM projects 
+		WHERE isDelete='0'
+   </select>
+    
+     <update id="deleteProjects" parameterType="String">
+		UPDATE projects 
+		SET
+			isDelete='1'
+		WHERE
+			project_id = #{projectId}
+	</update>
+	
+	   <select id="selectProjectsByProjectsId"  parameterType="String" resultType="com.jiashi.domain.Projects">
+       	SELECT
+		  project_id AS projectId,
+		  project_name AS projectName,
+		  project_address AS projectAddress,
+		  isDelete AS isDelete
+		FROM projects 
+		WHERE isDelete='0' AND project_id=#{ProjectsId}
+		
+   </select>
+</mapper>
